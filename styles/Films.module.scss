@@ -1,0 +1,35 @@
+$maxWidthContainer:1110px;
+
+
+@mixin CreateContainer{
+    max-width: $maxWidthContainer;
+    margin: 0 auto;
+}
+
+
+
+
+.container{
+    @include CreateContainer;
+    background-color: orange;
+    display: flex;
+    height: 100vh;
+    
+   
+    ///TEMP
+   
+}
+
+.mainBlock{
+    background-color: skyblue;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 3;
+   
+}
+
+.container article{
+    flex-grow: 1;
+    max-width: 350px;
+    min-width: 300px;
+}
