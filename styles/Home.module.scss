@@ -1,3 +1,7 @@
+@font-face {
+  font-family: 'starWars';
+  src: url('../fonts/SfDistantGalaxyOutlineItalic-4yA4.ttf'); // pattern: /directoryName/file.extension
+ }
 .container {
   padding: 0 2rem;
 }
@@ -28,7 +32,7 @@
   position: absolute;
   left: 0;
   top: 0;
-  z-index: -1;
+  z-index: 1;
 }
 
 .main_wrapper{
@@ -38,6 +42,7 @@
   width: 100%;
   height: 100%;
   background-color: rgba(0,0, 0,0.4);
+  z-index: 2;
 
 }
 
@@ -53,6 +58,7 @@
   position:relative;
 }
 .entered_button{
+  font-family: 'starWars';
   border: 3px solid #DC3545;
   background-color: transparent;
   border-radius: 20px;

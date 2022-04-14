@@ -3,7 +3,9 @@ import Navbar from "../../components/Nav";
 import firebase from "../../firebase/db";
 import { useCollection } from 'react-firebase-hooks/firestore';
 import Link from 'next/link'
-
+import Search from "../../components/Search";
+import Film from '../../components/Film';
+import { checkEmptyList, errorMessage } from './../../global_func/func';
 export const getServerSideProps = async(context)=>{
 
   let films = []
@@ -47,8 +49,7 @@ return{
 
 const CurrentFilm = ({films,id}) => {
   const {data} = films[0];
-  
-  let counter = 0;
+
 
 
 
@@ -72,37 +73,46 @@ const [starships,starshipsLoading,starshipsLoadingError]= useCollection(
      <Navbar />
 
       <section className={styles.mainBlock}>
-      <section>SEARCH ZONE</section>
-        <h1>Film</h1>
-        <div><strong>CURRENT FILM {id}</strong> - {data?.title}</div>
-  <div><strong>Producer</strong> - {data?.producer}</div>
-  <div><strong>Created</strong> - {data?.created}</div>
-  <div><strong>Director</strong> - {data?.director}</div>
-  <div><strong>Opening crawl</strong> -  {data?.opening_crawl}</div>
+      <Search/>
+      <Film data ={data}/>
   
   <br/>
-  <div>Characters : {characters?.docs?.map(doc=>
-  data.characters.includes(doc.data().url) ?
-  <span key={doc.data().url}>
-    <strong><Link href={`/characters/${doc.data().url}`}>{doc.data().name}</Link> - {doc.data().url} | 
-    </strong></span> : console.log(doc.data().url) )}  </div>
+  <div><div className={styles.HeadlineLinks}>Characters :</div> {
+  
+  checkEmptyList(characters?.docs, data?.characters) ?
+
+  characters?.docs?.map(doc=>data.characters.includes(doc.data().url) &&
+
+  <span key={doc.data().url} className={styles.elementSearching}>  <Link href={`/characters/${doc.data().url}`}>{doc.data().name}</Link>  </span>  
+   
+   ) : <span  className={styles.elementSearchingError}>{errorMessage()}</span> }  </div>
     
     <br/>
 
-    <div>Planets : {planets?.docs?.map(doc=>
-  data.planets.includes(doc.data().url) ?
-  <span key={doc.data().url}>
-    <strong><Link href={`/planets/${doc.data().url}`}>{doc.data().name}</Link> - {doc.data().url} | 
-    
-    </strong></span> : console.log(doc.data().url) )}  </div>
+
+
+    <div><div className={styles.HeadlineLinks}>Planets :</div> {
+
+      checkEmptyList(planets?.docs, data?.planets) ?
+
+    planets?.docs?.map(doc=> data.planets.includes(doc.data().url) &&
+
+   <span key={doc.data().url} className={styles.elementSearching}>  <Link href={`/planets/${doc.data().url}`}>{doc.data().name}</Link> </span>  )
+  
+  : <span  className={styles.elementSearchingError}>{errorMessage()}</span>  }</div>
     
     <br/>
     
-    <div>Starships : {starships?.docs?.map(doc=>
-  data.starships.includes(doc.data().url) ?
-  <span key={doc.data().url}>
-    <strong><Link href={`/starships/${doc.data().url}`}>{doc.data().name}</Link> - {doc.data().url} | 
-    </strong></span> : console.log(doc.data().url) )}  </div>
+    
+
+    <div><div className={styles.HeadlineLinks}>Starships :</div> { 
+     checkEmptyList(starships?.docs, data?.starships) ?
+
+     starships?.docs?.map(doc=>data.starships.includes(doc.data().url) &&
+     
+    <span key={doc.data().url} className={styles.elementSearching}><Link href={`/starships/${doc.data().url}` } >{doc.data().name}</Link> </span> ) 
+    
+    : <span  className={styles.elementSearchingError}>{errorMessage()}</span> }  </div>
     
       </section>
 

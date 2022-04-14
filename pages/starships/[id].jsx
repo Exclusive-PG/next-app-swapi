@@ -3,7 +3,7 @@ import Navbar from "../../components/Nav";
 import firebase from "../../firebase/db";
 import { useCollection } from 'react-firebase-hooks/firestore';
 import Link from 'next/link'
-
+import Search from "../../components/Search";
 export const getServerSideProps = async(context)=>{
 
   let starship = []
@@ -85,7 +85,7 @@ const [starships,starshipsLoading,starshipsLoadingError]= useCollection(
      <Navbar />
 
       <section className={styles.mainBlock}>
-      <section>SEARCH ZONE</section>
+      <Search/>
         <h1>Starship</h1>
   <div><strong>Current Starship #{id}</strong> - {data?.name}</div>
   <div><strong>Model</strong> - {data?.model} </div>

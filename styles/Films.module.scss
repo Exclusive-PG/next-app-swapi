@@ -6,22 +6,30 @@ $maxWidthContainer:1110px;
     margin: 0 auto;
 }
 
-
+@font-face {
+    font-family: 'starWars';
+    src: url('../fonts/SfDistantGalaxyOutlineItalic-4yA4.ttf'); 
+   }
+@font-face {
+    font-family: 'starWarsInline';
+    src: url('../fonts/SfDistantGalaxy-0l3d.ttf'); 
+   }
+   @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 
 .container{
     @include CreateContainer;
-    background-color: orange;
+  
     display: flex;
     height: 100vh;
-    
+    background-color: rgba($color: #DC3545, $alpha: .6);
    
     ///TEMP
    
 }
 
 .mainBlock{
-    background-color: skyblue;
+    padding:0 20px;
     display: flex;
     flex-direction: column;
     flex-grow: 3;
@@ -30,6 +38,35 @@ $maxWidthContainer:1110px;
 
 .container article{
     flex-grow: 1;
-    max-width: 350px;
-    min-width: 300px;
+    max-width: 330px;
+    min-width: 330px;
+}
+
+.elementSearching{
+    background-color: #2F3640;
+    color:#fff;
+    border-radius:20px;
+    padding: 10px 15px;
+    margin-left: 10px;
+    margin-bottom:5px;
+    display:inline-block;
+}
+.elementSearchingError{
+    background-color: #2F3640;
+    color:#DC3545;
+    border-radius:20px;
+    padding: 10px 15px;
+    margin-left: 10px;
+    margin-bottom:5px;
+    display:inline-block;
+}
+
+
+.HeadlineLinks{
+    
+    text-transform:uppercase;
+    font-family: 'starWarsInline';
+    font-size: 20px;
+    margin-bottom:10px;
+    letter-spacing:2px;
 }
