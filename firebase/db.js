@@ -2,12 +2,12 @@ import firebase from 'firebase/compat/app'
 import 'firebase/compat/firestore'
 
 const clientCredentials = {
-    apiKey: "AIzaSyAp5w7d9fTh81rQ7tCm1qdRyCzh8_2--xQ",
-    authDomain: "swapi-films-next-app.firebaseapp.com",
-    projectId: "swapi-films-next-app",
-    storageBucket: "swapi-films-next-app.appspot.com",
-    messagingSenderId: "736590779749",
-    appId: "1:736590779749:web:a93691b53fd578fae63d8c"
+    apiKey: process.env.FIREBASE_API_KEY,
+    authDomain:  process.env.FIREBASE_AUTH_DOMAIN,
+    projectId:  process.env.FIREBASE_PROJECT_ID,
+    storageBucket:  process.env.FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+    appId:  process.env.FIREBASE_APP_ID
 };
 
 if (!firebase.apps.length) {
@@ -15,3 +15,4 @@ if (!firebase.apps.length) {
   }
   
   export default firebase;
+

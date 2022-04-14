@@ -6,20 +6,15 @@ import Link from 'next/link'
 import Search from "../../components/Search";
 import Film from '../../components/Film';
 import { checkEmptyList, errorMessage } from './../../global_func/func';
+
+
 export const getServerSideProps = async(context)=>{
-
   let films = []
-  
   const {id} = context.params;
-  
-
-
   const querySnapshot = await firebase.firestore()
   .collection('films')
   .where("episode_id","==", parseInt(id))
   .get();
-
-
   querySnapshot.forEach(function (doc) {
     films.push({
       data: doc.data(),
@@ -32,8 +27,6 @@ export const getServerSideProps = async(context)=>{
     }
   }
 
-
-  
 return{
     props:{
       films ,
@@ -44,14 +37,8 @@ return{
 }
 
  
-
-
-
 const CurrentFilm = ({films,id}) => {
   const {data} = films[0];
-
-
-
 
 const [characters,Loading,LoadingError]= useCollection(
   firebase.firestore().collection("characters"),{}
@@ -62,11 +49,7 @@ const [planets,planetsLoading,planetsLoadingError]= useCollection(
 const [starships,starshipsLoading,starshipsLoadingError]= useCollection(
   firebase.firestore().collection("starships"),{}
 )
-
-
   return (
-
-
   <main>
 
   <div className={styles.container}>
@@ -118,14 +101,9 @@ const [starships,starshipsLoading,starshipsLoadingError]= useCollection(
 
 
   </div>
-
-
-
 </main>
     
   )
 }
-
-
 
 export default CurrentFilm;
