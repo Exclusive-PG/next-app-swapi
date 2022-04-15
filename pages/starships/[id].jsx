@@ -6,25 +6,13 @@ import Link from 'next/link'
 import Search from "../../components/Search";
 import Starship from '../../components/Starships';
 import Head from 'next/head'
+import { get } from '../../global_func/func';
 
 export const getServerSideProps = async(context)=>{
 
-  let starship = []
-  
   const {id} = context.params;
   
-  
-  const querySnapshot = await firebase.firestore()
-  .collection('starships')
-  .where("url","==", id)
-  .get();
-
-
-  querySnapshot.forEach(function (doc) {
-    starship.push({
-      data: doc.data(),
-    })
-  })
+  let starship = await get(id,'starships',"url",firebase)
 
   if(!starship.length) {
     return{

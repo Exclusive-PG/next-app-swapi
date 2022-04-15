@@ -5,21 +5,14 @@ import { useCollection } from 'react-firebase-hooks/firestore';
 import Link from 'next/link'
 import Search from "../../components/Search";
 import Film from '../../components/Film';
-import { checkEmptyList, errorMessage } from './../../global_func/func';
+import { checkEmptyList, errorMessage, get } from './../../global_func/func';
 import Head from 'next/head'
 
 export const getServerSideProps = async(context)=>{
-  let films = []
+ 
   const {id} = context.params;
-  const querySnapshot = await firebase.firestore()
-  .collection('films')
-  .where("episode_id","==", parseInt(id))
-  .get();
-  querySnapshot.forEach(function (doc) {
-    films.push({
-      data: doc.data(),
-    })
-  })
+
+  let films = await get(parseInt(id),'films',"episode_id",firebase)
 
   if(!films.length) {
     return{
@@ -27,11 +20,12 @@ export const getServerSideProps = async(context)=>{
     }
   }
 
+
+  
 return{
     props:{
       films ,
-      id, 
-    
+      id,   
     }
   }
 }

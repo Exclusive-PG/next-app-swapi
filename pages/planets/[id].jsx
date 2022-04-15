@@ -5,25 +5,14 @@ import { useCollection } from 'react-firebase-hooks/firestore';
 import Head from 'next/head'
 import Search from "../../components/Search";
 import Planet from '../../components/Planet';
+import { get } from '../../global_func/func';
+
 export const getServerSideProps = async(context)=>{
 
-  let planet = []
-  
   const {id} = context.params;
+
+  let planet = await get(id,'planets',"url",firebase)
   
-  
-  const querySnapshot = await firebase.firestore()
-  .collection('planets')
-  .where("url","==", id)
-  .get();
-
-
-  querySnapshot.forEach(function (doc) {
-    planet.push({
-      data: doc.data(),
-    })
-  })
-
   if(!planet.length) {
     return{
       notFound:true,

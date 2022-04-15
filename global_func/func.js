@@ -44,3 +44,19 @@ export const RedirectToGoal = (router,path) => {
     router.push(path)
   }
   
+  export async function get(id,collection,field,firebase){
+    let docs = []
+    
+    const querySnapshot = await firebase.firestore()
+    .collection(collection)
+    .where(field,"==", id)
+    .get();
+  
+    querySnapshot.forEach(function (doc) {
+      docs.push({
+        data: doc.data(),
+      })
+    })
+  return docs;
+  
+  }
