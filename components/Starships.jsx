@@ -22,7 +22,7 @@ const {name,model,manufacturer,starship_class,passengers,crew,films,pilots,url} 
         <div><strong className={styles.HeadlineLinks}>Films :</strong> {film?.map(doc=>
         films?.includes(doc.data().url) &&
         <span key={doc.data().url} className={styles.elementSearching}>
-        <strong><Link href={`/films/${doc.data().url}`}><a>{doc.data().title}</a></Link> </strong>
+        <strong><Link href={`/films/${doc.data().episode_id}`}><a>{doc.data().title}</a></Link> </strong>
         </span> )}  </div>
 
         <br/>

@@ -20,7 +20,7 @@ const {name,climate,population,terrain,gravity,films,url} = data;
                     <strong  className={styles.HeadlineLinks}> Films :</strong> {filmsList?.map(doc=>
                    films.includes(doc.data().url) &&
                     <span key={doc.data().url} className={styles.elementSearching}>
-                    <Link href={`/films/${doc.data().url}`}>{doc.data().title}</Link></span> 
+                    <Link href={`/films/${doc.data().episode_id}`}>{doc.data().title}</Link></span> 
                     )} 
                 </div>
             <br/>

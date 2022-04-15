@@ -37,7 +37,7 @@ const {name,gender,hair_color,height,mass,homeworld,films,starships,url} = chara
    FilmsList.map(doc=>
     films.includes(doc.data().url) &&
   <span key={doc.data().url} className={styles.elementSearching}>
-    <Link href={`/films/${doc.data().url}`}><a>{doc.data().title} </a></Link></span> 
+    <Link href={`/films/${doc.data().episode_id}`}><a>{doc.data().title} </a></Link></span> 
     ) : <span className={styles.elementSearchingError}>{errorMessage()}</span> } 
      </div>
 
