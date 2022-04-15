@@ -5,15 +5,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faSearch} from "@fortawesome/free-solid-svg-icons";
 import {useRef,useState} from 'react'
 const Search = () => {
-//  const[filmsList,filmLoading,filmError]= useCollection(firebase.firestore().collection("films"),{})
-
-// if(!filmLoading && filmsList){
-// console.log(filmsList)
-   
-// }
-// if(filmError){
-//     console.log(filmError.message)
-// }
 
 const refInput = useRef();
 
@@ -23,10 +14,17 @@ const SearchContent = async (text)=>{
 console.log(text)
 
 let films = []
-
+let planets = []
 const querySnapshot = await firebase.firestore()
 .collection('films')
-.where("title","==", text)
+.orderBy('title')
+.startAt(text).endAt(text + '~')
+.get();
+
+const querySnapshotPlanet = await firebase.firestore()
+.collection('planets')
+.where('name', '>=', text)
+.where('name', '<=', text+ '\uf8ff')
 .get();
 
 
@@ -36,20 +34,33 @@ querySnapshot.forEach(function (doc) {
   })
 })
 
-setSearchFilms(films)
+querySnapshotPlanet.forEach(function (doc) {
+  planets.push({
+  data: doc.data(),
+})
+})
+
+
+setSearchFilms({films,planets})
 console.log(searchFilms)
 
 }
 
   return (
     <header className={styles.headerWrapper}>
-      {searchFilms?.map(item=>(
-          <div>{item.data.title} - {item.data.release_date} </div> 
+      <div>Film</div> 
+       {searchFilms?.films?.map(item=>(
+          <div key={item.data.url}>{item.data.title} - {item.data.release_date} </div> 
       ))}
+      <div>Planets</div>
+      {searchFilms?.planets?.map(item=>(
+          <div key={item.data.url}>{item.data.name} - {item.data.created} </div> 
+      ))}
+
         <div className={styles.container}>
             <div className={styles.inputSearchWrapper}>
                 <div className={styles.search_box}>
-                    <input className={styles.search_txt} ref={refInput} type="text" name=""  placeholder="Type to search"/>
+                    <input className={styles.search_txt} ref={refInput} type="text" name="" onChange={()=>SearchContent(refInput.current?.value)}  placeholder="Type to search"/>
                     <a className={styles.search_btn} onClick={()=>SearchContent(refInput.current?.value)}><FontAwesomeIcon icon={faSearch}  style={{ fontSize:26, color: "#DC3545" }}/></a>
                 </div>
             </div>

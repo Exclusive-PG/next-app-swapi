@@ -22,7 +22,7 @@ $maxWidthContainer:1110px;
   
     display: flex;
     height: 100vh;
-    background-color: rgba($color: #DC3545, $alpha: .6);
+    background-color: rgba($color:#eb3b5a, $alpha: .9);
    
     ///TEMP
    
@@ -69,4 +69,12 @@ $maxWidthContainer:1110px;
     font-size: 20px;
     margin-bottom:10px;
     letter-spacing:2px;
+}
+.MainName{
+    font-size: 35px;
+}
+.FieldValue{
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    letter-spacing:0;
 }

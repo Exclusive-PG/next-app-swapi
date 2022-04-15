@@ -8,8 +8,6 @@ export default function Home() {
 
   const [burgerMenu,setBurgerMenu] = useState(false);
 
-
-
   return (
     <>
     <div className={styles.container}>

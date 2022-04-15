@@ -6,7 +6,7 @@ import Link from 'next/link'
 import Search from "../../components/Search";
 import Film from '../../components/Film';
 import { checkEmptyList, errorMessage } from './../../global_func/func';
-
+import Head from 'next/head'
 
 export const getServerSideProps = async(context)=>{
   let films = []
@@ -51,6 +51,9 @@ const [starships,starshipsLoading,starshipsLoadingError]= useCollection(
 )
   return (
   <main>
+<Head>
+        <title>Film - {data?.title}</title>
+</Head>
 
   <div className={styles.container}>
      <Navbar />

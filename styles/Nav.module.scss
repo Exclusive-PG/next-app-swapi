@@ -6,7 +6,7 @@
 
 
 .container{
-    background-color: rgba($color: #2F3640, $alpha: .8);
+    background-color: rgba($color: #4b6584, $alpha: .8);
     height: 100vh;
     font-family: 'starWars';
 }
@@ -30,7 +30,11 @@
 
 }
 .activeLink{
-    color: #DC3545;
+    color: #eb3b5a;
+    border: 1px solid #eb3b5a ;
+    border-radius: 20px;
+    text-align: center;
+    
 }
 
 .logo{
