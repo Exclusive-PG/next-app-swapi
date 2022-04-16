@@ -60,3 +60,23 @@ export const RedirectToGoal = (router,path) => {
   return docs;
   
   }
+
+export async function SearchFirebase(textQuery,collection,orderBy,firebase){
+
+  let QueryRes = [];
+
+  const querySnapshot = await firebase.firestore()
+  .collection(collection)
+  .orderBy(orderBy)
+  .startAt(textQuery.trim()).endAt(textQuery.trim() + '~')
+  .get();
+  
+  querySnapshot.forEach(function (doc) {
+    QueryRes.push({
+    data: doc.data(),
+  })
+})
+
+return  QueryRes
+
+}

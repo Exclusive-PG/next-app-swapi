@@ -40,11 +40,6 @@ if(filmError){
             </Link>)
         }
         </div>
-
-      
-
-
-
     </article>
   )
 }

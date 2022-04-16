@@ -5,6 +5,7 @@ import Navbar from "../../components/Nav";
 import React from 'react'
 import Head from 'next/head'
 import Search from "../../components/Search";
+import RootPages from './../../components/RootPages';
 
 export default function Characters() {
  
@@ -21,9 +22,8 @@ export default function Characters() {
         <div className={styles.container}>
            <Navbar />
             <section className={styles.mainBlock}>
-              <Search/>
-                <h1>Characters</h1>
-                  
+              <Search/>            
+                <RootPages headline = {"Star Wars Characters"} />
             </section>
 
 

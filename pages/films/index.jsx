@@ -5,6 +5,7 @@ import Navbar from "../../components/Nav";
 import React from 'react'
 import Head from 'next/head'
 import Search from "../../components/Search";
+import RootPages from "../../components/RootPages";
 
 export default function Films() {
 
@@ -21,7 +22,7 @@ export default function Films() {
            <Navbar />
             <section className={styles.mainBlock}>
             <Search/>
-                <h1>Films</h1>
+                <RootPages headline = {"Star Wars Films"} />
                   
             </section>
 

@@ -5,6 +5,7 @@ import Navbar from "../../components/Nav";
 import React from 'react'
 import Head from 'next/head'
 import Search from "../../components/Search";
+import RootPages from './../../components/RootPages';
 export default function StarShips() {
 
     
@@ -19,7 +20,7 @@ export default function StarShips() {
            <Navbar />
             <section className={styles.mainBlock}>
             <Search/>
-                <h1>Starships</h1>
+            <RootPages headline = {"Star Wars Starships"} />
                   
             </section>
 

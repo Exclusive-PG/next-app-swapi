@@ -1,0 +1,16 @@
+
+
+@font-face {
+    font-family: 'starWars';
+    src: url('../fonts/SfDistantGalaxyOutlineItalic-4yA4.ttf'); 
+   }
+  @font-face {
+    font-family: 'starWarsInline';
+    src: url('../fonts/SfDistantGalaxy-0l3d.ttf'); 
+   }
+
+   @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+  
+  .headlineRoot{
+    font-family: 'starWarsInline';
+  }
