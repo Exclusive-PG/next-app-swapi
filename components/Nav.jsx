@@ -6,25 +6,16 @@ import {useRouter} from "next/router"
 import Image from "next/image"
 import StarWarsLogo from "../public/star-wars-jedi-fallen-order-1.svg";
 import { RedirectToGoal } from './../global_func/func';
+
 const Navbar = () => {
   
- 
   const router = useRouter();
   const {asPath} = router;
 
 const[filmsList,filmLoading,filmError]= useCollection(firebase.firestore().collection("films"),{})
 
-if(!filmLoading && filmsList){
-console.log(filmsList)
-   
-}
-if(filmError){
-    console.log(filmError.message)
-}
 
 
-
-   
   return (
     <article className={styles.articleWrapper}>
       

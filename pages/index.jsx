@@ -37,7 +37,7 @@ const socials = [
 
 export default function Home() {
 
-  const [burgerMenu,setBurgerMenu] = useState(false);
+  //const [burgerMenu,setBurgerMenu] = useState(false);
 
   return (
     <>

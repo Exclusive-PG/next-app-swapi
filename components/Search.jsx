@@ -27,7 +27,7 @@ setSearchFilms({films,planets,characters,starships})
 
 //Save data to LocalStorage
 SaveData("data__search",
-[{
+{
   data:{
   search_txt:text,
   date_search:  Date.now(),
@@ -38,14 +38,11 @@ SaveData("data__search",
       starships
       }
        } 
-}]
+}
 )
 
 }
 
-
-
-console.log(openSearchBar)
 
   return (
     <header className={styles.headerWrapper}>

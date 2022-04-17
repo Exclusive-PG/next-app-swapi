@@ -2,12 +2,12 @@ import styles from "../styles/404.module.scss"
 
 import {useEffect,useState} from "react"
 import { RedirectToGoal } from "../global_func/func";
-import  useRouter  from 'next/router';
+import  {useRouter}  from 'next/router';
 const Custom404 = () => {
 
 const [timer,setTimer] = useState(5);
 
-const router = useRouter;
+const router = useRouter();
 const REDIRECT_TIMER_SEC = 0;
 
 useEffect(()=>{

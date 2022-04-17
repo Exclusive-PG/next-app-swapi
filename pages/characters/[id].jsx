@@ -30,7 +30,7 @@ return{
 
 const CurrentCharacters = ({characters,id}) => {
   
-  console.log(characters)
+ 
   const {data} = characters[0]
 
  const [planets,planetsLoading,planetsLoadingError]= useCollection(

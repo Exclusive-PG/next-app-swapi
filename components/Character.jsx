@@ -60,12 +60,12 @@ const {name,gender,hair_color,height,mass,homeworld,films,starships,url} = chara
 
 <div> <strong className={styles.HeadlineLinks}> Other characters: </strong>: {charactersList?.map(doc=>
  
- doc.data().url !== url ?
+ doc.data().url !== url &&
   
   <span key={doc.data().url} className={styles.elementSearching}>
      <Link href={`/characters/${doc.data().url}`}><a>{doc.data().name} </a></Link></span> 
    
-   : console.log(doc.data().url) )}  </div>  
+    )}  </div>  
 
 
 </>

@@ -36,8 +36,6 @@ const CurrentStarship = ({starship,id}) => {
 
 const {data} = starship[0];
   
-console.log(data)
-
 
 const [films,filmsLoading,filmsLoadingError]= useCollection(
   firebase.firestore().collection("films"),{}
