@@ -1,6 +1,6 @@
 
 
-export const SaveData = (key,value) =>{
+export const SaveData = (key:string,value:Object) =>{
 try{
     let data = []
 

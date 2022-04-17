@@ -1,10 +1,10 @@
 
 import styles from '../../styles/Films.module.scss';
-import Navbar from "../../components/Nav";
+import Navbar from "../../components/Nav.tsx";
 import React from 'react'
 import Head from 'next/head'
-import Search from "../../components/Search";
-import RootPages from './../../components/RootPages';
+import Search from "../../components/Search.tsx";
+import RootPages from './../../components/RootPages.tsx';
 export default function Planets() {
 
 

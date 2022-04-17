@@ -4,15 +4,19 @@ import styles from "../styles/Nav.module.scss"
 import Link from 'next/link'
 import {useRouter} from "next/router"
 import Image from "next/image"
-import StarWarsLogo from "../public/star-wars-jedi-fallen-order-1.svg";
-import { RedirectToGoal } from './../global_func/func';
 
-const Navbar = () => {
+// @ts-ignore
+import StarWarsLogo from "./../public/star-wars-jedi-fallen-order-1.svg";
+//@ts-ignore
+import { RedirectToGoal } from '../global_func/func.ts';
+
+const Navbar:React.FC = () => {
   
   const router = useRouter();
   const {asPath} = router;
 
-const[filmsList,filmLoading,filmError]= useCollection(firebase.firestore().collection("films"),{})
+// @ts-ignore
+const[filmsList,filmLoading,filmError]= useCollection(firebase.firestore().collection("films"),{}) 
 
 
 

@@ -1,9 +1,20 @@
 
 import styles from "../styles/Films.module.scss"
 import Link from 'next/link'
-import { checkEmptyList,errorMessage , checkId} from "../global_func/func"
+//@ts-ignore
+import { checkEmptyList,errorMessage , checkId} from "../global_func/func.ts"
+import { CurrentCharacter, CurrentFilm, CurrentStarship , Starship} from "../types/type"
 
-const Starship = ({starship,characters,film,starships})=>{
+
+type Props ={
+    starship:Starship
+    characters:Array<CurrentCharacter>
+    film:Array<CurrentFilm>
+    starships:Array<CurrentStarship>
+}
+
+
+const Starship:React.FC<Props> = ({starship,characters,film,starships})=>{
 
 const {data} = starship[0]
 const {name,model,manufacturer,starship_class,passengers,crew,films,pilots,url} = data;
@@ -20,8 +31,11 @@ const {name,model,manufacturer,starship_class,passengers,crew,films,pilots,url} 
             <br/>
 
         <div><strong className={styles.HeadlineLinks}>Films :</strong> {film?.map(doc=>
+        //@ts-ignore
         films?.includes(doc.data().url) &&
+        //@ts-ignore
         <span key={doc.data().url} className={styles.elementSearching}>
+        {/* @ts-ignore */}
         <strong><Link href={`/films/${doc.data().episode_id}`}><a>{doc.data().title}</a></Link> </strong>
         </span> )}  </div>
 
@@ -30,8 +44,11 @@ const {name,model,manufacturer,starship_class,passengers,crew,films,pilots,url} 
         <div><strong className={styles.HeadlineLinks}>Pilots :</strong> {
      checkEmptyList(characters,pilots) ?   
 characters?.map(doc=>
+    //@ts-ignore
   pilots.includes(doc.data().url) &&
+  //@ts-ignore
   <span key={doc.data().url} className={styles.elementSearching}>
+      {/* @ts-ignore */}
     <strong><Link href={`/characters/${doc.data().url}`}><a>{doc.data().name}</a></Link></strong></span> ) : 
     <span className={styles.elementSearchingError}>{errorMessage()}</span>
     }  </div>
@@ -42,9 +59,11 @@ characters?.map(doc=>
     <strong className={styles.HeadlineLinks}> Other starships :</strong> {
        checkId(starships,url) ?
     starships?.map(doc=>
+         //@ts-ignore
         doc.data().url !== url &&
-
+        //@ts-ignore
   <span key={doc.data().url} className={styles.elementSearching}>
+      {/*  @ts-ignore */}
     <Link href={`/starships/${doc.data().url}`}><a>{doc.data().name} </a></Link></span> 
  ) : <span className={styles.elementSearchingError}>{errorMessage()}</span>} 
      </div>

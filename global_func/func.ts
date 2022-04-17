@@ -1,5 +1,7 @@
+
+
  
-export const checkEmptyList = (arrayCheck,currentArray) =>{
+export const checkEmptyList = (arrayCheck:Array<any>,currentArray:Array<any>) =>{
 
     let isRight = false;
     
@@ -17,7 +19,7 @@ export const checkEmptyList = (arrayCheck,currentArray) =>{
           
     }
 
-export const checkId = (arrayCheck,id)=>{
+export const checkId = (arrayCheck:Array<any>,id:string|number)=>{
 
 
     let isRight = false;
@@ -38,13 +40,13 @@ export const checkId = (arrayCheck,id)=>{
 }
 
 
-export const errorMessage = (text = "Not Found") => text;
+export const errorMessage = (text:string = "Not Found") => text;
 
-export const RedirectToGoal = (router,path) => {
+export const RedirectToGoal = (router,path:string) => {
     router.push(path)
   }
   
-  export async function get(id,collection,field,firebase){
+  export async function get(id:number|string,collection:string,field:string,firebase){
     let docs = []
     
     const querySnapshot = await firebase.firestore()
@@ -61,7 +63,7 @@ export const RedirectToGoal = (router,path) => {
   
   }
 
-export async function SearchFirebase(textQuery,collection,orderBy,firebase){
+export async function SearchFirebase(textQuery:string,collection:string,orderBy:string,firebase){
 
   let QueryRes = [];
 

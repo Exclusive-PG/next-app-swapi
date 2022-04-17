@@ -21,7 +21,7 @@ $maxWidthContainer:1110px;
     @include CreateContainer;
   
     display: flex;
-    height: 100vh;
+    min-height: 100vh;
     background-color: rgba($color:#eb3b5a, $alpha: .9);
    
     ///TEMP

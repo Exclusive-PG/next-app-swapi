@@ -1,11 +1,14 @@
+
 import styles from '../../styles/Films.module.scss';
-import Navbar from "../../components/Nav";
+import Navbar from "../../components/Nav.tsx";
 import firebase from "../../firebase/db";
 import { useCollection } from 'react-firebase-hooks/firestore';
-import Search from "../../components/Search";
-import Character from '../../components/Character';
+import Search from "../../components/Search.tsx";
+
 import Head from 'next/head'
-import { get } from '../../global_func/func';
+//@ts-ignore
+import { get } from '../../global_func/func.ts';
+import Character from './../../components/Character.tsx';
 
 export const getServerSideProps = async(context)=>{
 

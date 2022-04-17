@@ -3,11 +3,13 @@ import styles from "../styles/Search.module.scss"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faSearch, faXmark} from "@fortawesome/free-solid-svg-icons";
 import {useRef,useState,useEffect} from 'react'
-import { SearchFirebase } from "../global_func/func";
+//@ts-ignore
+import { SearchFirebase } from "../global_func/func.ts";
 import  Link  from 'next/link';
-import { SaveData } from "../localStorage/cache";
+//@ts-ignore
+import { SaveData } from "../localStorage/cache.ts";
 
-const Search = () => {
+const Search:React.FC = () => {
 
 const refInput = useRef();
 
@@ -91,6 +93,7 @@ SaveData("data__search",
   </div>
 
         <div className={styles.container}>
+           {/* @ts-ignore */}
           <center><h2 className={styles.Headline}>Fast Search</h2></center>
             <div className={styles.inputSearchWrapper}>
                 <div className={styles.search_box}>

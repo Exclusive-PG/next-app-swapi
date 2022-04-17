@@ -7,7 +7,7 @@
 
 .container{
     background-color: rgba($color: #4b6584, $alpha: .8);
-    height: 100vh;
+    min-height: 100%;
     font-family: 'starWars';
 }
 
@@ -16,7 +16,7 @@
 
 
 .articleWrapper{
-
+min-height: 100vh;
 }
 .item{
     padding: 10px;

@@ -1,8 +1,16 @@
 
 import styles from "../styles/Films.module.scss"
 import Link from 'next/link'
+import { CurrentFilm, CurrentPlanet, Planet } from "../types/type"
 
-const Planet = ({planet,filmsList,planetsList})=>{
+
+type Props = {
+    planet:Planet,
+    filmsList:Array<CurrentFilm>
+    planetsList:Array<CurrentPlanet>
+  }
+
+const Planet:React.FC<Props> = ({planet,filmsList,planetsList})=>{
 const {data} = planet[0]
 const {name,climate,population,terrain,gravity,films,url} = data;
 
@@ -18,8 +26,11 @@ const {name,climate,population,terrain,gravity,films,url} = data;
             <br/>
                 <div> 
                     <strong  className={styles.HeadlineLinks}> Films :</strong> {filmsList?.map(doc=>
+                    //@ts-ignore
                    films.includes(doc.data().url) &&
+                   //@ts-ignore
                     <span key={doc.data().url} className={styles.elementSearching}>
+                        {/* @ts-ignore */}
                     <Link href={`/films/${doc.data().episode_id}`}>{doc.data().title}</Link></span> 
                     )} 
                 </div>
@@ -27,8 +38,11 @@ const {name,climate,population,terrain,gravity,films,url} = data;
 
             <div> <strong className={styles.HeadlineLinks}>Other planets: </strong> {
             planetsList?.map(doc=>
+                //@ts-ignore
             doc.data().url !== url &&
+            //@ts-ignore
             <span key={doc.data().url} className={styles.elementSearching}>
+               {/* @ts-ignore */}
             <Link href={`/planets/${doc.data().url}`}>{doc.data().name}</Link></span> 
             
             )}  </div>            

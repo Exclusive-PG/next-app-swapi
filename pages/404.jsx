@@ -1,7 +1,8 @@
 import styles from "../styles/404.module.scss"
 
 import {useEffect,useState} from "react"
-import { RedirectToGoal } from "../global_func/func";
+//@ts-ignore
+import { RedirectToGoal } from "../global_func/func.ts";
 import  {useRouter}  from 'next/router';
 const Custom404 = () => {
 

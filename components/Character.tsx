@@ -1,10 +1,19 @@
-import { checkEmptyList,errorMessage , checkId} from "../global_func/func";
+//@ts-ignore
+import { checkEmptyList,errorMessage , checkId} from "../global_func/func.ts";
 import styles from "../styles/Films.module.scss"
 import Link from 'next/link'
+import { CurrentCharacter,CurrentFilm, CurrentPlanet,Character, CurrentStarship} from "../types/type";
 
 
+type Props = {
+  character:Array<CurrentCharacter>,
+  planets:Array<CurrentPlanet>,
+  FilmsList:Array<CurrentFilm>,
+  starshipsList:Array<CurrentStarship>,
+  charactersList:Array<Character>
+}
 
-const Character = ({character,planets,FilmsList,starshipsList,charactersList})=>{
+const Character:React.FC<Props>  = ({character,planets,FilmsList,starshipsList,charactersList})=>{
 
 
 const {name,gender,hair_color,height,mass,homeworld,films,starships,url} = character[0].data;
@@ -23,7 +32,7 @@ const {name,gender,hair_color,height,mass,homeworld,films,starships,url} = chara
         checkId(planets,homeworld)?
 
         planets?.map(doc => (
-      
+      //@ts-ignore     
         doc.data().url === homeworld && <Link href={`/planets/${doc.data().url}`}  key={doc.data().url}><a className={styles.elementSearching}>{doc.data().name}</a></Link> 
         )) : <span className={styles.elementSearchingError}>{errorMessage()}</span>}
         </div>  
@@ -35,8 +44,11 @@ const {name,gender,hair_color,height,mass,homeworld,films,starships,url} = chara
    
    checkEmptyList( FilmsList,films) ?
    FilmsList.map(doc=>
+    //@ts-ignore
     films.includes(doc.data().url) &&
+     //@ts-ignore
   <span key={doc.data().url} className={styles.elementSearching}>
+    {/* @ts-ignore */}
     <Link href={`/films/${doc.data().episode_id}`}><a>{doc.data().title} </a></Link></span> 
     ) : <span className={styles.elementSearchingError}>{errorMessage()}</span> } 
      </div>
@@ -49,8 +61,11 @@ const {name,gender,hair_color,height,mass,homeworld,films,starships,url} = chara
   checkEmptyList(starshipsList,starships) ?
     
   starshipsList.map(doc=>
+       //@ts-ignore
         starships.includes(doc.data().url) &&
+           //@ts-ignore
  <span key={doc.data().url} className={styles.elementSearching}>
+   {/*    @ts-ignore */}
   <Link href={`/starships/${doc.data().url}`}><a>{doc.data().name}</a></Link></span> 
   
     ) : <span className={styles.elementSearchingError}>{errorMessage()}</span>}   </div>  
@@ -59,10 +74,11 @@ const {name,gender,hair_color,height,mass,homeworld,films,starships,url} = chara
 
 
 <div> <strong className={styles.HeadlineLinks}> Other characters: </strong>: {charactersList?.map(doc=>
- 
+     //@ts-ignore
  doc.data().url !== url &&
-  
+  //@ts-ignore
   <span key={doc.data().url} className={styles.elementSearching}>
+  {/* @ts-ignore */}
      <Link href={`/characters/${doc.data().url}`}><a>{doc.data().name} </a></Link></span> 
    
     )}  </div>  
