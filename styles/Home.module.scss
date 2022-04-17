@@ -154,14 +154,42 @@ $color--primary:  #DC3545;
   }
 }
 
+.LinkBlock{
+  position: absolute;
+  left: 50%;
+  top: 60%;
+  transform: translate(-50%,-50%);
+  margin-top: 50px;
+
+    .WrapperLink a{
+      margin-left: 25px;
+      border-radius: 50px;
+
+
+    }
+
+    .WrapperLink .item_2{
+      background-color: red !important;
+    }
+ 
+
+    .itemLink{
+      animation: animate 2s linear infinite alternate;
+      
+    }
+}
 
 
 
 
-
-
-
-
+@keyframes animate {
+  0%{
+    transform: translateY(0);
+  }
+  100%{
+    transform: translateY(-35px);
+  }
+}
 
 
 

@@ -5,6 +5,7 @@ import {faSearch, faXmark} from "@fortawesome/free-solid-svg-icons";
 import {useRef,useState,useEffect} from 'react'
 import { SearchFirebase } from "../global_func/func";
 import  Link  from 'next/link';
+import { SaveData } from "../localStorage/cache";
 
 const Search = () => {
 
@@ -24,7 +25,25 @@ let starships = await SearchFirebase(text,'starships','name',firebase) || []
 
 setSearchFilms({films,planets,characters,starships})
 
+//Save data to LocalStorage
+SaveData("data__search",
+[{
+  data:{
+  search_txt:text,
+  date_search:  Date.now(),
+  res:{
+      films,
+      planets,
+      characters,
+      starships
+      }
+       } 
+}]
+)
+
 }
+
+
 
 console.log(openSearchBar)
 

@@ -3,6 +3,37 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.scss'
 import {useState} from 'react'
 import Link from 'next/link'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub, faInstagram, faTelegram } from '@fortawesome/free-brands-svg-icons'
+
+
+const socials = [
+  {
+    id:1,
+    icon: faGithub,
+    link:"https://github.com/Exclusive-PG",
+    color: "#fff",
+    animationDelay: "1s"
+  },
+  {
+    id:2,
+    icon: faInstagram,
+    link:"https://www.instagram.com/exclusive_developer",
+    color: "#D0228B",
+    animationDelay: "2s"
+  },
+  {
+    id:3,
+    icon: faTelegram,
+    link:"https://t.me/developerFrontEnd",
+    color: "#1086C1",
+    animationDelay: "3s"
+  },
+]
+
+
+
+
 
 export default function Home() {
 
@@ -24,17 +55,26 @@ export default function Home() {
         <section className={styles.main_wrapper}>
             <div className={`${styles.block_center} `}>
                 <div className={`${styles.content} `}>
-                 
+{/*                  
                 <div className={`${styles.hamburger} ${styles.c_hamburger} ${burgerMenu && styles.open}`} onClick={()=> setBurgerMenu(!burgerMenu)}>
                     <span className={`${styles.c_hamburger__line}`}></span>
                     <span className={`${styles.c_hamburger__line}`}></span>
                     <span className={`${styles.c_hamburger__line}`}></span>
-                </div>
-
-                <Link href={'/films'} ><button type="button" className={`${styles.entered_button}`}>Get started </button></Link>
+                </div> */}
                
-                </div>
+                <Link href={'/films'} ><button type="button" className={`${styles.entered_button}`}>Get started </button></Link>
+                
 
+
+                <footer className={styles.LinkBlock}>
+                      <div className={styles.WrapperLink}>
+                        {socials.map(item=>(
+                          <a key={item.id} href={item.link}><FontAwesomeIcon icon={item.icon} style={{fontSize:"95px",color:item.color,animationDelay:item.animationDelay}} className={styles.itemLink}/></a>
+                        ))}
+                      </div>
+                  </footer>
+                </div>
+                
             </div>
         </section>
       </main>

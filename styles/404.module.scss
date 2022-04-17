@@ -1,0 +1,54 @@
+
+@font-face {
+    font-family: 'starWars';
+    src: url('../fonts/SfDistantGalaxyOutlineItalic-4yA4.ttf'); 
+   }
+  @font-face {
+    font-family: 'starWarsInline';
+    src: url('../fonts/SfDistantGalaxy-0l3d.ttf'); 
+   }
+
+   @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+  
+
+   .Wrapper404Page{
+       background-image: url("../public/dart.jpg");
+       background-repeat: no-repeat;
+       background-position: center;
+       background-size: cover;
+       width: 100%;
+       height: 100vh;
+       position: absolute;
+       left: 0;
+       top: 0;
+   }
+
+.contentWrapper{
+    margin:0 auto;
+    max-width:1000px;
+    padding: 0 15px;
+    display:flex;
+    height: 100%;
+    align-items: center;
+
+}
+
+.headline{
+    color: #fff;
+    font-family: 'starWarsInline';
+    letter-spacing: 5px;
+    line-height: 38px;
+}
+.entered_button{
+    font-family: 'starWarsInline';
+    border: 3px solid #DC3545;
+    background-color: transparent;
+    border-radius: 20px;
+    color: white;
+    padding: 15px 62px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 26px;
+    transition: .3s all;
+  }
