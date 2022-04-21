@@ -15,3 +15,18 @@ try{
 }
 
 }
+
+
+		//Save data to LocalStorage
+		// SaveData("data__search", {
+		// 	data: {
+		// 		search_txt: text,
+		// 		date_search: Date.now(),
+		// 		res: {
+		// 			films,
+		// 			planets,
+		// 			characters,
+		// 			starships,
+		// 		},
+		// 	},
+		// });

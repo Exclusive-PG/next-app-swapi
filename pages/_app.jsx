@@ -1,10 +1,30 @@
-import '../styles/globals.css'
+import "../styles/globals.css";
 import "@fortawesome/fontawesome-svg-core/styles.css"; // import Font Awesome CSS
 import { config } from "@fortawesome/fontawesome-svg-core";
-config.autoAddCss = false; 
+import { Provider } from "react-redux";
+import store from "../Redux/store";
+import { createWrapper } from "next-redux-wrapper";
+import App from "next/app";
+config.autoAddCss = false;
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+
+class MyApp extends App{
+  render(){
+    const {Component,pageProps} = this.props;
+
+    return (
+  <Provider store={store}>
+    <Component {...pageProps}></Component>
+   </Provider>
+    );
+  }
 }
 
-export default MyApp
+
+
+
+const makeStore = ()=>store;
+const wrapper = createWrapper(makeStore);
+
+
+export default wrapper.withRedux(MyApp);

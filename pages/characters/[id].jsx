@@ -1,80 +1,57 @@
-
-import styles from '../../styles/Films.module.scss';
-import Navbar from "../../components/Nav.tsx";
+import styles from "../../styles/Films.module.scss";
+import Navbar from "../../components/Nav";
 import firebase from "../../firebase/db";
-import { useCollection } from 'react-firebase-hooks/firestore';
-import Search from "../../components/Search.tsx";
+import { useCollection } from "react-firebase-hooks/firestore";
+import Search from "../../components/Search";
+import Head from "next/head";
+import { get } from "../../global_func/func.ts";
+import Character from "./../../components/Character";
 
-import Head from 'next/head'
-//@ts-ignore
-import { get } from '../../global_func/func.ts';
-import Character from './../../components/Character.tsx';
+export const getServerSideProps = async (context) => {
+	const { id } = context.params;
 
-export const getServerSideProps = async(context)=>{
+	let characters = await get(id, "characters", "url", firebase);
 
-const {id} = context.params;
+	if (!characters.length) {
+		return {
+			notFound: true,
+		};
+	}
 
-let characters = await get(id,"characters","url",firebase)
+	return {
+		props: {
+			characters,
+			id,
+		},
+	};
+};
 
-if(!characters.length) {
-  return{
-    notFound:true,
-  }
-}
+const CurrentCharacters = ({ characters, id }) => {
+	const { data } = characters[0];
 
-return{
-  props:{
-    characters ,
-    id, 
-  
-  }
-}
-}
+	const [planets, planetsLoading, planetsLoadingError] = useCollection(firebase.firestore().collection("planets"), {});
 
-const CurrentCharacters = ({characters,id}) => {
-  
- 
-  const {data} = characters[0]
+	const [films, filmsLoading, filmsLoadingError] = useCollection(firebase.firestore().collection("films"), {});
 
- const [planets,planetsLoading,planetsLoadingError]= useCollection(
-  firebase.firestore().collection("planets"),{}
-)
+	const [starships, starshipsLoading, starshipsLoadingError] = useCollection(firebase.firestore().collection("starships"), {});
 
-const [films,filmsLoading,filmsLoadingError]= useCollection(
-  firebase.firestore().collection("films"),{}
-)
+	const [charactersDB, charactersLoading, charactersLoadingError] = useCollection(firebase.firestore().collection("characters"), {});
 
-const [starships,starshipsLoading,starshipsLoadingError]= useCollection(
-  firebase.firestore().collection("starships"),{}
-)
+	return (
+		<main>
+			<Head>
+				<title>Character - {data?.name}</title>
+			</Head>
 
-
-const [charactersDB,charactersLoading,charactersLoadingError]= useCollection(
-  firebase.firestore().collection("characters"),{}
-)
-
-
-
-  return (
-
-
-  <main>
-<Head>
-        <title>Character - {data?.name}</title>
-</Head>
-
-  <div className={styles.container}>
-     <Navbar />
-      <section className={styles.mainBlock}>
-      <Search/>
-  <Character character ={characters} planets={planets?.docs} FilmsList ={films?.docs} starshipsList={starships?.docs} charactersList={charactersDB?.docs}/>
-       </section>
-  </div>
-</main>
-    
-  )
-}
-
-
+			<div className={styles.container}>
+				<Navbar />
+				<section className={styles.mainBlock}>
+					<Search />
+					<Character character={characters} planets={planets?.docs} FilmsList={films?.docs} starshipsList={starships?.docs} charactersList={charactersDB?.docs} />
+				</section>
+			</div>
+		</main>
+	);
+};
 
 export default CurrentCharacters;
