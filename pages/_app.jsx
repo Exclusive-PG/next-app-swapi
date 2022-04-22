@@ -7,24 +7,19 @@ import { createWrapper } from "next-redux-wrapper";
 import App from "next/app";
 config.autoAddCss = false;
 
+class MyApp extends App {
+	render() {
+		const { Component, pageProps } = this.props;
 
-class MyApp extends App{
-  render(){
-    const {Component,pageProps} = this.props;
-
-    return (
-  <Provider store={store}>
-    <Component {...pageProps}></Component>
-   </Provider>
-    );
-  }
+		return (
+			<Provider store={store}>
+				<Component {...pageProps}></Component>
+			</Provider>
+		);
+	}
 }
 
-
-
-
-const makeStore = ()=>store;
+const makeStore = () => store;
 const wrapper = createWrapper(makeStore);
-
 
 export default wrapper.withRedux(MyApp);

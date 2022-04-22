@@ -2,11 +2,13 @@ import styles from "../../styles/Films.module.scss";
 import Navbar from "../../components/Nav";
 import firebase from "../../firebase/db";
 import { useCollection } from "react-firebase-hooks/firestore";
-
 import Search from "../../components/Search";
 import Starship from "../../components/Starships";
 import Head from "next/head";
 import { get } from "../../global_func/func.ts";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { RefreshCurrentStarshipAC } from "../../Redux/reducers/reducerCurrentItem";
 
 export const getServerSideProps = async (context) => {
 	const { id } = context.params;
@@ -29,12 +31,17 @@ export const getServerSideProps = async (context) => {
 
 const CurrentStarship = ({ starship, id }) => {
 	const { data } = starship[0];
+	const [films] = useCollection(firebase.firestore().collection("films"), {});
+	const [characters] = useCollection(firebase.firestore().collection("characters"), {});
+	const [starships] = useCollection(firebase.firestore().collection("starships"), {});
 
-	const [films, filmsLoading, filmsLoadingError] = useCollection(firebase.firestore().collection("films"), {});
+	const { currentStarship } = useSelector((state) => state.reducerCurrentItem);
+	const dispatch = useDispatch();
 
-	const [characters, charactersLoading, charactersLoadingError] = useCollection(firebase.firestore().collection("characters"), {});
+	useEffect(() => {
+		dispatch(RefreshCurrentStarshipAC(data));
+	}, [data]);
 
-	const [starships, starshipsLoading, starshipsLoadingError] = useCollection(firebase.firestore().collection("starships"), {});
 	return (
 		<main>
 			<Head>
@@ -42,10 +49,9 @@ const CurrentStarship = ({ starship, id }) => {
 			</Head>
 			<div className={styles.container}>
 				<Navbar />
-
 				<section className={styles.mainBlock}>
 					<Search />
-					<Starship starship={starship} film={films?.docs} characters={characters?.docs} starships={starships?.docs} />
+					<Starship starship={currentStarship} film={films?.docs} characters={characters?.docs} starships={starships?.docs} />
 				</section>
 			</div>
 		</main>

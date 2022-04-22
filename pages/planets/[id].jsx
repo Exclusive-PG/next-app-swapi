@@ -6,6 +6,9 @@ import Head from "next/head";
 import Search from "../../components/Search";
 import Planet from "../../components/Planet";
 import { get } from "../../global_func/func.ts";
+import { RefreshCurrentPlanetAC } from "../../Redux/reducers/reducerCurrentItem";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
 
 export const getServerSideProps = async (context) => {
 	const { id } = context.params;
@@ -28,22 +31,27 @@ export const getServerSideProps = async (context) => {
 
 const CurrentPlanet = ({ planet, id }) => {
 	const { data } = planet[0];
+	const [films] = useCollection(firebase.firestore().collection("films"), {});
+	const [planets] = useCollection(firebase.firestore().collection("planets"), {});
 
-	const [films, filmsLoading, filmsLoadingError] = useCollection(firebase.firestore().collection("films"), {});
+	const { currentPlanet } = useSelector((state) => state.reducerCurrentItem);
+	const dispatch = useDispatch();
 
-	const [planets, planetsLoading, planetsLoadingError] = useCollection(firebase.firestore().collection("planets"), {});
+	useEffect(() => {
+		dispatch(RefreshCurrentPlanetAC(data));
+	}, [data]);
 
 	return (
 		<main>
 			<Head>
-				<title>Planet - {data?.name}</title>
+				<title>Planet - {currentPlanet?.name}</title>
 			</Head>
 			<div className={styles.container}>
 				<Navbar />
 
 				<section className={styles.mainBlock}>
 					<Search />
-					<Planet planet={planet} filmsList={films?.docs} planetsList={planets?.docs} />
+					<Planet planet={currentPlanet} filmsList={films?.docs} planetsList={planets?.docs} />
 				</section>
 			</div>
 		</main>

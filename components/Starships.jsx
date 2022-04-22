@@ -3,8 +3,7 @@ import Link from "next/link";
 import { checkEmptyList, errorMessage, checkId } from "../global_func/func.ts";
 
 const Starship = ({ starship, characters, film, starships }) => {
-	const { data } = starship[0];
-	const { name, model, manufacturer, starship_class, passengers, crew, films, pilots, url } = data;
+	const { name, model, manufacturer, starship_class, passengers, crew, films, pilots, url } = starship;
 
 	return (
 		<div className={styles.currentFilmWrapper}>
@@ -44,7 +43,7 @@ const Starship = ({ starship, characters, film, starships }) => {
 									</Link>{" "}
 								</strong>
 							</span>
-						)
+						),
 				)}{" "}
 			</div>
 
@@ -63,7 +62,7 @@ const Starship = ({ starship, characters, film, starships }) => {
 										</Link>
 									</strong>
 								</span>
-							)
+							),
 					)
 				) : (
 					<span className={styles.elementSearchingError}>{errorMessage()}</span>
@@ -83,7 +82,7 @@ const Starship = ({ starship, characters, film, starships }) => {
 										<a>{doc.data().name} </a>
 									</Link>
 								</span>
-							)
+							),
 					)
 				) : (
 					<span className={styles.elementSearchingError}>{errorMessage()}</span>

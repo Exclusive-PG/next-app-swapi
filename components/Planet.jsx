@@ -2,8 +2,7 @@ import styles from "../styles/Films.module.scss";
 import Link from "next/link";
 
 const Planet = ({ planet, filmsList, planetsList }) => {
-	const { data } = planet[0];
-	const { name, climate, population, terrain, gravity, films, url } = data;
+	const { name, climate, population, terrain, gravity, films, url } = planet;
 
 	return (
 		<div className={styles.currentFilmWrapper}>
@@ -34,7 +33,7 @@ const Planet = ({ planet, filmsList, planetsList }) => {
 							<span key={doc.data().url} className={styles.elementSearching}>
 								<Link href={`/films/${doc.data().episode_id}`}>{doc.data().title}</Link>
 							</span>
-						)
+						),
 				)}
 			</div>
 			<br />
@@ -48,7 +47,7 @@ const Planet = ({ planet, filmsList, planetsList }) => {
 							<span key={doc.data().url} className={styles.elementSearching}>
 								<Link href={`/planets/${doc.data().url}`}>{doc.data().name}</Link>
 							</span>
-						)
+						),
 				)}{" "}
 			</div>
 		</div>

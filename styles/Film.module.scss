@@ -1,35 +1,33 @@
+@font-face {
+	font-family: "starWarsOutline";
+	src: url("../fonts/SfDistantGalaxyOutlineItalic-4yA4.ttf");
+}
 
 @font-face {
-    font-family: 'starWarsOutline';
-    src: url('../fonts/SfDistantGalaxyOutlineItalic-4yA4.ttf'); 
-   }
-
-   @font-face {
-    font-family: 'starWarsInline';
-    src: url('../fonts/SfDistantGalaxy-0l3d.ttf'); 
-   }
-
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-
-.currentFilmWrapper{
-    font-size: 20px;
-   
-    div{
-        margin-bottom: 5px;
-        font-family: 'Roboto', sans-serif;
-    }
+	font-family: "starWarsInline";
+	src: url("../fonts/SfDistantGalaxy-0l3d.ttf");
 }
 
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
-.NameFilm{
-    font-family: 'starWarsOutline' !important;
-    font-size: 30px;
-    font-weight: bold;
-    margin-bottom:20px !important;
+.currentFilmWrapper {
+	font-size: 20px;
+
+	div {
+		margin-bottom: 5px;
+		font-family: "Roboto", sans-serif;
+	}
 }
 
-.NameField{
-    font-family: 'starWarsInline';
-    letter-spacing:2px;
-    text-transform:uppercase;
+.NameFilm {
+	font-family: "starWarsOutline" !important;
+	font-size: 30px;
+	font-weight: bold;
+	margin-bottom: 20px !important;
+}
+
+.NameField {
+	font-family: "starWarsInline";
+	letter-spacing: 2px;
+	text-transform: uppercase;
 }

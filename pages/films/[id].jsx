@@ -7,7 +7,7 @@ import Search from "../../components/Search";
 import { checkEmptyList, errorMessage, get } from "./../../global_func/func.ts";
 import Head from "next/head";
 import Film from "./../../components/Film";
-import {useEffect} from "react"
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RefreshCurrentFilmAC } from "../../Redux/reducers/reducerCurrentItem";
 
@@ -37,16 +37,13 @@ const CurrentFilm = ({ films, id }) => {
 	const [planets] = useCollection(firebase.firestore().collection("planets"), {});
 	const [starships] = useCollection(firebase.firestore().collection("starships"), {});
 
-
 	const { currentFilm } = useSelector((state) => state.reducerCurrentItem);
 	const dispatch = useDispatch();
 
+	useEffect(() => {
+		dispatch(RefreshCurrentFilmAC(data));
+	}, [data]);
 
-useEffect(()=>{
-
-dispatch(RefreshCurrentFilmAC(data))
-},[data])
-	
 	return (
 		<main>
 			<Head>
@@ -66,7 +63,7 @@ dispatch(RefreshCurrentFilmAC(data))
 						{checkEmptyList(characters?.docs, currentFilm?.characters) ? (
 							characters?.docs?.map(
 								(doc) =>
-								currentFilm.characters.includes(doc.data().url) && (
+									currentFilm.characters.includes(doc.data().url) && (
 										<span key={doc.data().url} className={styles.elementSearching}>
 											{" "}
 											<Link href={`/characters/${doc.data().url}`}>{doc.data().name}</Link>{" "}
@@ -85,7 +82,7 @@ dispatch(RefreshCurrentFilmAC(data))
 						{checkEmptyList(planets?.docs, currentFilm?.planets) ? (
 							planets?.docs?.map(
 								(doc) =>
-								currentFilm?.planets.includes(doc.data().url) && (
+									currentFilm?.planets.includes(doc.data().url) && (
 										<span key={doc.data().url} className={styles.elementSearching}>
 											{" "}
 											<Link href={`/planets/${doc.data().url}`}>{doc.data().name}</Link>{" "}
@@ -104,7 +101,7 @@ dispatch(RefreshCurrentFilmAC(data))
 						{checkEmptyList(starships?.docs, currentFilm?.starships) ? (
 							starships?.docs?.map(
 								(doc) =>
-								currentFilm?.starships.includes(doc.data().url) && (
+									currentFilm?.starships.includes(doc.data().url) && (
 										<span key={doc.data().url} className={styles.elementSearching}>
 											<Link href={`/starships/${doc.data().url}`}>{doc.data().name}</Link>{" "}
 										</span>

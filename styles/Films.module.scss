@@ -1,90 +1,82 @@
-$maxWidthContainer:1110px;
+$maxWidthContainer: 1110px;
 
-
-@mixin CreateContainer{
-    max-width: $maxWidthContainer;
-    margin: 0 auto;
+@mixin CreateContainer {
+	max-width: $maxWidthContainer;
+	margin: 0 auto;
 }
 
 @font-face {
-    font-family: 'starWars';
-    src: url('../fonts/SfDistantGalaxyOutlineItalic-4yA4.ttf'); 
-   }
+	font-family: "starWars";
+	src: url("../fonts/SfDistantGalaxyOutlineItalic-4yA4.ttf");
+}
 @font-face {
-    font-family: 'starWarsInline';
-    src: url('../fonts/SfDistantGalaxy-0l3d.ttf'); 
-   }
-   @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+	font-family: "starWarsInline";
+	src: url("../fonts/SfDistantGalaxy-0l3d.ttf");
+}
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
+.container {
+	@include CreateContainer;
 
-.container{
-    @include CreateContainer;
-  
-    display: flex;
-    min-height: 100vh;
-    background-color: rgba($color:#eb3b5a, $alpha: .9);
-   
-    ///TEMP
-   
+	display: flex;
+	min-height: 100vh;
+	background-color: rgba($color: #eb3b5a, $alpha: 0.9);
+
+	///TEMP
 }
 
-.mainBlock{
-    padding:0 20px;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 3;
-    max-height: 100vh;
-    overflow-y: scroll;
+.mainBlock {
+	padding: 0 20px;
+	display: flex;
+	flex-direction: column;
+	flex-grow: 3;
+	max-height: 100vh;
+	overflow-y: scroll;
 }
 
-.container article{
-    flex-grow: 1;
-    max-width: 330px;
-    min-width: 330px;
+.container article {
+	flex-grow: 1;
+	max-width: 330px;
+	min-width: 330px;
 }
 
-.elementSearching{
-    background-color: #2F3640;
-    color:#fff;
-    border-radius:20px;
-    padding: 10px 15px;
-    margin-left: 10px;
-    margin-bottom:5px;
-    display:inline-block;
+.elementSearching {
+	background-color: #2f3640;
+	color: #fff;
+	border-radius: 20px;
+	padding: 10px 15px;
+	margin-left: 10px;
+	margin-bottom: 5px;
+	display: inline-block;
 }
-.elementSearchingError{
-    background-color: #2F3640;
-    color:#DC3545;
-    border-radius:20px;
-    padding: 10px 15px;
-    margin-left: 10px;
-    margin-bottom:5px;
-    display:inline-block;
-}
-
-
-.HeadlineLinks{
-    
-    text-transform:uppercase;
-    font-family: 'starWarsInline';
-    font-size: 20px;
-    margin-bottom:10px;
-    letter-spacing:2px;
-}
-.MainName{
-    font-size: 35px;
-}
-.FieldValue{
-    font-family: 'Roboto', sans-serif;
-    font-size: 20px;
-    letter-spacing:0;
+.elementSearchingError {
+	background-color: #2f3640;
+	color: #dc3545;
+	border-radius: 20px;
+	padding: 10px 15px;
+	margin-left: 10px;
+	margin-bottom: 5px;
+	display: inline-block;
 }
 
+.HeadlineLinks {
+	text-transform: uppercase;
+	font-family: "starWarsInline";
+	font-size: 20px;
+	margin-bottom: 10px;
+	letter-spacing: 2px;
+}
+.MainName {
+	font-size: 35px;
+}
+.FieldValue {
+	font-family: "Roboto", sans-serif;
+	font-size: 20px;
+	letter-spacing: 0;
+}
 
 @media (max-width: 720px) {
-    .container article{
-       display: none;
-    }
-    
-  }
-  
+	.container article {
+		display: none;
+	}
+}

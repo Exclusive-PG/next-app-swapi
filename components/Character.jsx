@@ -3,7 +3,7 @@ import styles from "../styles/Films.module.scss";
 import Link from "next/link";
 
 const Character = ({ character, planets, FilmsList, starshipsList, charactersList }) => {
-	const { name, gender, hair_color, height, mass, homeworld, films, starships, url } = character[0].data;
+	const { name, gender, hair_color, height, mass, homeworld, films, starships, url } = character;
 
 	return (
 		<>
@@ -34,7 +34,7 @@ const Character = ({ character, planets, FilmsList, starshipsList, charactersLis
 									<Link href={`/planets/${doc.data().url}`} key={doc.data().url}>
 										<a className={styles.elementSearching}>{doc.data().name}</a>
 									</Link>
-								)
+								),
 						)
 					) : (
 						<span className={styles.elementSearchingError}>{errorMessage()}</span>
@@ -53,7 +53,7 @@ const Character = ({ character, planets, FilmsList, starshipsList, charactersLis
 										<a>{doc.data().title} </a>
 									</Link>
 								</span>
-							)
+							),
 					)
 				) : (
 					<span className={styles.elementSearchingError}>{errorMessage()}</span>
@@ -72,7 +72,7 @@ const Character = ({ character, planets, FilmsList, starshipsList, charactersLis
 										<a>{doc.data().name}</a>
 									</Link>
 								</span>
-							)
+							),
 					)
 				) : (
 					<span className={styles.elementSearchingError}>{errorMessage()}</span>
@@ -90,7 +90,7 @@ const Character = ({ character, planets, FilmsList, starshipsList, charactersLis
 									<a>{doc.data().name} </a>
 								</Link>
 							</span>
-						)
+						),
 				)}{" "}
 			</div>
 		</>

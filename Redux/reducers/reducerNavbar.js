@@ -1,34 +1,26 @@
-import {GET_DATA_FILMS_NAV} from "../variables"
+import { GET_DATA_FILMS_NAV } from "../variables";
 
 const initialState = {
-    filmsNav : []
-}
+	filmsNav: [],
+};
 
-const reducerNavbar = (state = initialState , action ) => {
+const reducerNavbar = (state = initialState, action) => {
+	switch (action.type) {
+		case GET_DATA_FILMS_NAV: {
+			return {
+				...state,
+				filmsNav: action.filmsNav,
+			};
+		}
 
-    switch(action.type){
-
-        case GET_DATA_FILMS_NAV: {
-
-            return {
-                ...state,
-                filmsNav : action.filmsNav
-            }
-        }
-
-       
-
-        default: 
-        return state;
-    }
-}
-
-
+		default:
+			return state;
+	}
+};
 
 export const GetDataFilmsNavAC = (filmsNav) => ({
-    type : GET_DATA_FILMS_NAV,
-    filmsNav
-    })
-
+	type: GET_DATA_FILMS_NAV,
+	filmsNav,
+});
 
 export default reducerNavbar;
