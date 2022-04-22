@@ -1,4 +1,4 @@
-export const REFRESH_INPUT_TODO = "REFRESH_INPUT_TODO";
+export const REFRESH_INPUT_SEARCH = "REFRESH_INPUT_SEARCH";
 export const ADD_DATA = "ADD_DATA";
 export const LOAD_DATA = "LOAD_DATA";
 export const GET_DATA_FILMS_NAV = "GET_DATA_FILM_NAV";

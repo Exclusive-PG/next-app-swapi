@@ -1,4 +1,4 @@
-import { REFRESH_INPUT_TODO, ADD_DATA, LOAD_DATA } from "../variables";
+import { REFRESH_INPUT_SEARCH, ADD_DATA, LOAD_DATA } from "../variables";
 
 const initialState = {
 	result: [],
@@ -9,7 +9,7 @@ const initialState = {
 
 const reducerSearch = (state = initialState, action) => {
 	switch (action.type) {
-		case REFRESH_INPUT_TODO: {
+		case REFRESH_INPUT_SEARCH: {
 			return {
 				...state,
 				inputSearch: action.inputSearch,
@@ -43,7 +43,7 @@ const reducerSearch = (state = initialState, action) => {
 };
 
 export const RefreshInputAC = (inputSearch) => ({
-	type: REFRESH_INPUT_TODO,
+	type: REFRESH_INPUT_SEARCH,
 	inputSearch,
 });
 
