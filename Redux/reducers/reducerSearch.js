@@ -8,7 +8,7 @@ const initialState = {
 }
 
 const reducerSearch = (state = initialState , action ) => {
-console.log(action)
+
     switch(action.type){
 
         case REFRESH_INPUT_TODO: {
@@ -51,7 +51,7 @@ console.log(action)
     }
 }
 
-export const RefreshInput = (inputSearch) => ({
+export const RefreshInputAC = (inputSearch) => ({
     type : REFRESH_INPUT_TODO,
     inputSearch
     })
@@ -62,36 +62,12 @@ inputSearch,
 result
 })  
 
-export const LoadDataFromLocalStorage = (result,isLoadLocalData)  =>({
+export const LoadDataFromLocalStorageAC = (result,isLoadLocalData)  =>({
     type : LOAD_DATA,
     result,
     isLoadLocalData
     })  
     
-// export const checkedTodo = (id:string):Object  =>({
-// type : COMPLETE_TODO_ITEM,
-// id
-// })
 
-// export const removeTodoAC = (id:string) :Object =>({
-// type : REMOVE_TODO_ITEM,
-// id
-// })
-
-// export const AddTodoAC = (inputTodo:string) :Object =>({
-// type : ADD_NEW_TODO_ITEM,
-// inputTodo
-// })
-
-
-// export const RefreshInput = (inputTodo:string) :Object => ({
-//     type : REFRESH_INPUT_TODO,
-//     inputTodo
-//     })
-
-// export const LoadToDOAC = (local : Array<IToDo>) =>({
-//     type : LOAD_TODO_ITEM,
-//     local
-// })
 
 export default reducerSearch;

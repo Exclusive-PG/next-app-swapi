@@ -1,11 +1,12 @@
-import { combineReducers, createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import {createLogger} from 'redux-logger';
-import reducerSearch from "./reducer/reducerSearch"
+import { RootReducer } from './reducers/rootReducer';
+
 
 const logger  = createLogger();
 
 
-export const RootReducer  = combineReducers({ reducerSearch })
+
 
 
 const store = createStore(RootReducer,applyMiddleware(logger));

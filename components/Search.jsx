@@ -5,17 +5,16 @@ import { faSearch, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { useRef, useState, useEffect } from "react";
 import { SearchFirebase } from "../global_func/func.ts";
 import Link from "next/link";
-import { SaveData } from "../localStorage/cache.ts";
 import { useSelector, useDispatch } from "react-redux";
-import { AddDataSeachToListAC, RefreshInput, LoadDataFromLocalStorage } from "./../Redux/reducer/reducerSearch";
+import { AddDataSeachToListAC, RefreshInputAC, LoadDataFromLocalStorageAC } from "../Redux/reducers/reducerSearch";
 
 const Search = () => {
 	const { inputSearch, result, isLoadLocalData, keyLocalStorage } = useSelector((state) => state.reducerSearch);
 	const dispatch = useDispatch();
 
 	const refInput = useRef();
-
 	const refInputActive = useRef();
+
 	const [searchFilms, setSearchFilms] = useState([]);
 
 	const [openSearchBar, setSearchBar] = useState(false);
@@ -34,13 +33,13 @@ const Search = () => {
 	};
 
 	const RefreshInputSearch = (value) => {
-		dispatch(RefreshInput(value));
+		dispatch(RefreshInputAC(value));
 	};
 
 	useEffect(() => {
 		if (localStorage.getItem(keyLocalStorage) && isLoadLocalData === false) {
 			let data = JSON.parse(localStorage.getItem(keyLocalStorage));
-			dispatch(LoadDataFromLocalStorage(data, true));
+			dispatch(LoadDataFromLocalStorageAC(data, true));
 		} else localStorage.setItem(keyLocalStorage, JSON.stringify(result));
 	}, [result]);
 

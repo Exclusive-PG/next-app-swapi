@@ -31,8 +31,6 @@ const socials = [
 ];
 
 export default function Home() {
-	//const [burgerMenu,setBurgerMenu] = useState(false);
-
 	return (
 		<>
 			<div className={styles.container}>
@@ -54,13 +52,6 @@ export default function Home() {
 					<section className={styles.main_wrapper}>
 						<div className={`${styles.block_center} `}>
 							<div className={`${styles.content} `}>
-								{/*                  
-                <div className={`${styles.hamburger} ${styles.c_hamburger} ${burgerMenu && styles.open}`} onClick={()=> setBurgerMenu(!burgerMenu)}>
-                    <span className={`${styles.c_hamburger__line}`}></span>
-                    <span className={`${styles.c_hamburger__line}`}></span>
-                    <span className={`${styles.c_hamburger__line}`}></span>
-                </div> */}
-
 								<Link href={"/films"}>
 									<button type="button" className={`${styles.entered_button}`}>
 										Get started{" "}

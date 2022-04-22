@@ -33,7 +33,8 @@ $maxWidthContainer:1110px;
     display: flex;
     flex-direction: column;
     flex-grow: 3;
-   
+    max-height: 100vh;
+    overflow-y: scroll;
 }
 
 .container article{
@@ -78,3 +79,12 @@ $maxWidthContainer:1110px;
     font-size: 20px;
     letter-spacing:0;
 }
+
+
+@media (max-width: 720px) {
+    .container article{
+       display: none;
+    }
+    
+  }
+  

@@ -7,6 +7,9 @@ import Search from "../../components/Search";
 import { checkEmptyList, errorMessage, get } from "./../../global_func/func.ts";
 import Head from "next/head";
 import Film from "./../../components/Film";
+import {useEffect} from "react"
+import { useSelector, useDispatch } from "react-redux";
+import { RefreshCurrentFilmAC } from "../../Redux/reducers/reducerCurrentItem";
 
 export const getServerSideProps = async (context) => {
 	const { id } = context.params;
@@ -30,13 +33,24 @@ export const getServerSideProps = async (context) => {
 const CurrentFilm = ({ films, id }) => {
 	const { data } = films[0];
 
-	const [characters, Loading, LoadingError] = useCollection(firebase.firestore().collection("characters"), {});
-	const [planets, planetsLoading, planetsLoadingError] = useCollection(firebase.firestore().collection("planets"), {});
-	const [starships, starshipsLoading, starshipsLoadingError] = useCollection(firebase.firestore().collection("starships"), {});
+	const [characters] = useCollection(firebase.firestore().collection("characters"), {});
+	const [planets] = useCollection(firebase.firestore().collection("planets"), {});
+	const [starships] = useCollection(firebase.firestore().collection("starships"), {});
+
+
+	const { currentFilm } = useSelector((state) => state.reducerCurrentItem);
+	const dispatch = useDispatch();
+
+
+useEffect(()=>{
+
+dispatch(RefreshCurrentFilmAC(data))
+},[data])
+	
 	return (
 		<main>
 			<Head>
-				<title>Film - {data?.title}</title>
+				<title>Film - {currentFilm?.title}</title>
 			</Head>
 
 			<div className={styles.container}>
@@ -44,15 +58,15 @@ const CurrentFilm = ({ films, id }) => {
 
 				<section className={styles.mainBlock}>
 					<Search />
-					<Film data={data} />
+					<Film data={currentFilm} />
 
 					<br />
 					<div>
 						<div className={styles.HeadlineLinks}>Characters :</div>{" "}
-						{checkEmptyList(characters?.docs, data?.characters) ? (
+						{checkEmptyList(characters?.docs, currentFilm?.characters) ? (
 							characters?.docs?.map(
 								(doc) =>
-									data.characters.includes(doc.data().url) && (
+								currentFilm.characters.includes(doc.data().url) && (
 										<span key={doc.data().url} className={styles.elementSearching}>
 											{" "}
 											<Link href={`/characters/${doc.data().url}`}>{doc.data().name}</Link>{" "}
@@ -68,10 +82,10 @@ const CurrentFilm = ({ films, id }) => {
 
 					<div>
 						<div className={styles.HeadlineLinks}>Planets :</div>{" "}
-						{checkEmptyList(planets?.docs, data?.planets) ? (
+						{checkEmptyList(planets?.docs, currentFilm?.planets) ? (
 							planets?.docs?.map(
 								(doc) =>
-									data.planets.includes(doc.data().url) && (
+								currentFilm?.planets.includes(doc.data().url) && (
 										<span key={doc.data().url} className={styles.elementSearching}>
 											{" "}
 											<Link href={`/planets/${doc.data().url}`}>{doc.data().name}</Link>{" "}
@@ -87,10 +101,10 @@ const CurrentFilm = ({ films, id }) => {
 
 					<div>
 						<div className={styles.HeadlineLinks}>Starships :</div>{" "}
-						{checkEmptyList(starships?.docs, data?.starships) ? (
+						{checkEmptyList(starships?.docs, currentFilm?.starships) ? (
 							starships?.docs?.map(
 								(doc) =>
-									data.starships.includes(doc.data().url) && (
+								currentFilm?.starships.includes(doc.data().url) && (
 										<span key={doc.data().url} className={styles.elementSearching}>
 											<Link href={`/starships/${doc.data().url}`}>{doc.data().name}</Link>{" "}
 										</span>

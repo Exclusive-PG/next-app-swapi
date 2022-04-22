@@ -12,7 +12,7 @@ const Film = ({ data }) => {
 				<strong className={styles.NameField}>Producer</strong> - {producer}
 			</div>
 			<div>
-				<strong className={styles.NameField}>Release date</strong> - {release_date.replaceAll("-", " ")}
+				<strong className={styles.NameField}>Release date</strong> - {release_date?.replaceAll("-", " ")}
 			</div>
 			<div>
 				<strong className={styles.NameField}>Director</strong> - {director}

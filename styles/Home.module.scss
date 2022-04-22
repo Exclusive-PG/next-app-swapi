@@ -1,7 +1,7 @@
 @font-face {
-  font-family: 'starWars';
-  src: url('../fonts/SfDistantGalaxyOutlineItalic-4yA4.ttf'); // pattern: /directoryName/file.extension
- }
+  font-family: "starWars";
+  src: url("../fonts/SfDistantGalaxyOutlineItalic-4yA4.ttf"); // pattern: /directoryName/file.extension
+}
 .container {
   padding: 0 2rem;
 }
@@ -16,13 +16,13 @@
   align-items: center;
 }
 
-.main a{
+.main a {
   text-decoration: none;
   list-style: none;
   color: #fff;
 }
 
-.backgroundPoster{
+.backgroundPoster {
   background-image: url("../public/main_screen.jpg");
   background-repeat: no-repeat;
   width: 100%;
@@ -35,31 +35,31 @@
   z-index: 1;
 }
 
-.main_wrapper{
+.main_wrapper {
   position: absolute;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0, 0,0.4);
+  background-color: rgba(0, 0, 0, 0.4);
   z-index: 2;
-
 }
 
-.block_center{
+.block_center {
   max-width: 1100px;
   margin: 0 auto;
 }
-.content{
+.content {
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  position:relative;
+  position: relative;
 }
-.entered_button{
-  font-family: 'starWars';
-  border: 3px solid #DC3545;
+.entered_button {
+  font-family: "starWars";
+  border: 3px solid #dc3545;
   background-color: transparent;
   border-radius: 20px;
   color: white;
@@ -68,15 +68,14 @@
   text-decoration: none;
   display: inline-block;
   font-size: 26px;
-  transition: .3s all;
+  transition: 0.3s all;
 }
-.entered_button:hover{
-  background-color: #DC3545;
+.entered_button:hover {
+  background-color: #dc3545;
   border-top-left-radius: 40px;
   border-bottom-right-radius: 40px;
   cursor: pointer;
 }
-
 
 .footer {
   display: flex;
@@ -95,9 +94,7 @@
   flex-grow: 1;
 }
 
-
-
-$color--primary:  #DC3545;
+$color--primary: #dc3545;
 
 .c_hamburger {
   cursor: pointer;
@@ -105,10 +102,10 @@ $color--primary:  #DC3545;
   margin: 0 auto;
   position: relative;
   width: 60px;
-  position:absolute;
+  position: absolute;
   right: 0;
-  top:10px;
-  
+  top: 10px;
+
   .c_hamburger__line {
     background-color: $color--primary;
     border-radius: 3px;
@@ -154,59 +151,53 @@ $color--primary:  #DC3545;
   }
 }
 
-.LinkBlock{
-  position: absolute;
-  left: 50%;
-  top: 60%;
-  transform: translate(-50%,-50%);
+.LinkBlock {
   margin-top: 50px;
+  display: flex;
+  justify-content: center;
 
-    .WrapperLink a{
-      margin-left: 25px;
-      border-radius: 50px;
+  .WrapperLink a {
+    margin-left: 25px;
+    border-radius: 50px;
+  }
 
+  .WrapperLink .item_2 {
+    background-color: red !important;
+  }
 
-    }
-
-    .WrapperLink .item_2{
-      background-color: red !important;
-    }
- 
-
-    .itemLink{
-      animation: animate 2s linear infinite alternate;
-      
-    }
+  .itemLink {
+    animation: animate 2s linear infinite alternate;
+  }
 }
 
-
-
-
 @keyframes animate {
-  0%{
+  0% {
     transform: translateY(0);
   }
-  100%{
+  100% {
     transform: translateY(-35px);
   }
 }
 
+@media (max-width: 691px) {
+  .LinkBlock {
+    .itemLink {
+      animation: none !important;
+      margin-top: 20px;
+    }
+    .WrapperLink {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      align-self: center;
+    }
+    .itemLink {
+      transform: scale(0.9);
+    }
+  }
 
-
-
-
-
-
-
-
-
-
-
-@media (max-width: 600px) {
-  .grid {
-    width: 100%;
-    flex-direction: column;
+  .entered_button {
+    padding: 15px 40px;
   }
 }
-
-
